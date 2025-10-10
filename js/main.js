@@ -7,8 +7,9 @@ const icons = [
   { name: "twitter", category: "social" },
 ];
 
+
 // Your CDN base URL
-const CDN_BASE = "https://cdn.example.com/icons";
+const CDN_BASE = "https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base@1.0.1/icons/";
 
 const iconGrid = document.getElementById("iconGrid");
 const searchInput = document.getElementById("searchInput");
