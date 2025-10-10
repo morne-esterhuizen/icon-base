@@ -9,7 +9,7 @@ const icons = [
 
 
 // Your CDN base URL
-const CDN_BASE = "https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base@1.0.1/icons/";
+const CDN_BASE = "https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base@v1.0.1/icons/";
 
 const iconGrid = document.getElementById("iconGrid");
 const searchInput = document.getElementById("searchInput");
