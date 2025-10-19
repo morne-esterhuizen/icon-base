@@ -1,4 +1,3 @@
-// Icon list (you can later automate this with a JSON or build script)
 const icons = [
   { name: "checkmark", category: "system" },
   { name: "close", category: "system" },
