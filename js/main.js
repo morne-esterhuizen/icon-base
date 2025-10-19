@@ -1,40 +1,64 @@
-const icons = [
-  { name: "checkmark", category: "system" },
-  { name: "close", category: "system" },
-  { name: "facebook", category: "brand" },
-  { name: "twitter", category: "brand" },
-];
+document.addEventListener("DOMContentLoaded", async () => {
+  const grid = document.getElementById("icon-grid");
+  const searchInput = document.getElementById("search");
+  const categoryFilter = document.getElementById("category-filter");
 
-const grid = document.getElementById("iconGrid");
-const searchInput = document.getElementById("search");
+  const categories = ["system", "brand"];
+  let icons = [];
 
-function renderIcons(filter = "") {
-  grid.innerHTML = "";
+  async function loadIcons() {
+    for (const category of categories) {
+      const res = await fetch(`icons/${category}/`);
+      const text = await res.text();
+      const parser = new DOMParser();
+      const html = parser.parseFromString(text, "text/html");
+      const files = [...html.querySelectorAll("a")]
+        .map(a => a.getAttribute("href"))
+        .filter(href => href && href.endsWith(".svg"));
 
-  icons
-    .filter(icon =>
-      icon.name.toLowerCase().includes(filter.toLowerCase())
-    )
-    .forEach(icon => {
+      files.forEach(file => {
+        const name = file.replace(".svg", "");
+        icons.push({ name, category, path: `icons/${category}/${file}` });
+      });
+    }
+    renderIcons(icons);
+  }
+
+  function renderIcons(list) {
+    grid.innerHTML = "";
+    list.forEach(icon => {
       const card = document.createElement("div");
       card.className = "icon-card";
-      const iconPath = `icons/${icon.category}/${icon.name}.svg`;
-
       card.innerHTML = `
-        <img src="${iconPath}" alt="${icon.name} icon">
-        <p>${icon.name}</p>
+        <img src="${icon.path}" alt="${icon.name}" />
+        <div>${icon.name}</div>
+        <small>${icon.category}</small>
       `;
-
-      card.addEventListener("click", () => copyIconLink(icon));
+      card.addEventListener("click", () => {
+        navigator.clipboard.writeText(icon.path);
+        card.classList.add("copied");
+        card.innerHTML = `<span>✅ Copied!</span>`;
+        setTimeout(() => renderIcons(list), 1000);
+      });
       grid.appendChild(card);
     });
-}
+  }
 
-function copyIconLink(icon) {
-  const url = `https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base/icons/${icon.category}/${icon.name}.svg`;
-  navigator.clipboard.writeText(url);
-  alert(`Copied link:\n${url}`);
-}
+  function filterIcons() {
+    const query = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
 
-searchInput.addEventListener("input", e => renderIcons(e.target.value));
-renderIcons();
+    const filtered = icons.filter(icon => {
+      const matchQuery = icon.name.toLowerCase().includes(query);
+      const matchCategory = category === "all" || icon.category === category;
+      return matchQuery && matchCategory;
+    });
+
+    renderIcons(filtered);
+  }
+
+  searchInput.addEventListener("input", filterIcons);
+  categoryFilter.addEventListener("change", filterIcons);
+
+  await loadIcons();
+});

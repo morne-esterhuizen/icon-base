@@ -3,55 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Icon Base — Creative Icon Library</title>
+  <title>Icon Base | v1.0.1</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script defer src="js/main.js"></script>
-  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
-  <meta name="description" content="A playful, modern icon library for web creators. Browse, preview, and copy icons instantly via CDN." />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>🎨 Icon Base</h1>
-      <nav>
-        <a href="#showcase">Showcase</a>
-        <a href="#usage">Usage</a>
-        <a href="https://github.com/morne-esterhuizen/icon-base/tree/master" target="_blank">GitHub</a>
-      </nav>
-    </div>
+  <header class="site-header container">
+    <h1>Icon Base</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Docs</a>
+      <a href="#">GitHub</a>
+    </nav>
   </header>
 
   <section class="hero">
-    <div class="container">
-      <h2>Express more with less.</h2>
-      <p>A free, creative icon library built for web developers and designers. Copy any icon’s CDN link instantly.</p>
-      <a href="#showcase" class="btn">Browse Icons</a>
-    </div>
+    <h2>Explore the Icon Base</h2>
+    <p>A modern, lightweight, auto-updating icon showcase.</p>
+    <a href="#showcase" class="btn">Browse Icons</a>
   </section>
 
-  <section id="showcase" class="showcase">
-    <div class="container">
-      <h3>🧩 Icon Showcase</h3>
-      <input type="text" id="search" placeholder="Search icons..." aria-label="Search icons" />
-      <div class="icon-grid" id="iconGrid">
-        <!-- Icons will be injected here dynamically -->
-      </div>
+  <section id="showcase" class="showcase container">
+    <h3>Icon Showcase</h3>
+
+    <div class="filter-controls">
+      <select id="category-filter">
+        <option value="all">All Categories</option>
+        <option value="system">System</option>
+        <option value="brand">Brand</option>
+      </select>
+
+      <input type="text" id="search" placeholder="Search icons..." />
     </div>
+
+    <div class="icon-grid" id="icon-grid"></div>
   </section>
 
-  <section id="usage" class="usage">
-    <div class="container">
-      <h3>📘 How to Use</h3>
-      <p>Add icons to your project in seconds using jsDelivr CDN:</p>
-      <pre><code>&lt;img src="https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base/icons/brand/close.svg" alt="Star Icon"&gt;</code></pre>
-      <p>You can replace <code>star.svg</code> with any icon name from the library.</p>
-    </div>
+  <section class="usage container">
+    <h3>Usage</h3>
+    <p>Use any icon directly via CDN:</p>
+    <pre><code>&lt;img src="https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base/icons/system/checkmark.svg" alt="checkmark" /&gt;</code></pre>
   </section>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>Made with 💛 by <a href="https://github.com/morne-esterhuizen" target="_blank">@morne-esterhuizen</a> — Licensed under BSD 3-Clause</p>
-    </div>
+    <p>© 2025 Icon Base • Built with ❤️</p>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
