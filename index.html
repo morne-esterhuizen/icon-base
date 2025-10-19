@@ -1,53 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Icon Base | v1.0.1</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Icon Base — Creative Icon Library</title>
+  <meta name="description" content="Playful icon library: browse, filter, preview and copy CDN links." />
+
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header container">
-    <h1>Icon Base</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Docs</a>
-      <a href="#">GitHub</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 class="logo">🎨 Icon Base</h1>
+        <span class="tag">playful · tiny · delightful</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#showcase">Showcase</a>
+        <a href="#usage">Usage</a>
+        <a href="https://github.com/morne-esterhuizen/icon-base" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Explore the Icon Base</h2>
-    <p>A modern, lightweight, auto-updating icon showcase.</p>
-    <a href="#showcase" class="btn">Browse Icons</a>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Express more with less.</h2>
+        <p class="lead">A lightweight, open-source icon library. Click an icon to copy a ready-to-use CDN link.</p>
+        <a class="btn" href="#showcase">Browse Icons</a>
+      </div>
+    </section>
 
-  <section id="showcase" class="showcase container">
-    <h3>Icon Showcase</h3>
+    <section id="showcase" class="showcase">
+      <div class="container">
+        <div class="showcase-head">
+          <h3>🧩 Icon Showcase</h3>
+          <p class="sub">Filter by category or search by name.</p>
+        </div>
 
-    <div class="filter-controls">
-      <select id="category-filter">
-        <option value="all">All Categories</option>
-        <option value="system">System</option>
-        <option value="brand">Brand</option>
-      </select>
+        <div class="filter-controls" role="region" aria-label="Icon filters">
+          <label class="visually-hidden" for="categoryFilter">Category</label>
+          <select id="categoryFilter" aria-label="Filter by category">
+            <option value="all">All categories</option>
+          </select>
 
-      <input type="text" id="search" placeholder="Search icons..." />
-    </div>
+          <label class="visually-hidden" for="searchInput">Search icons</label>
+          <input id="searchInput" type="search" placeholder="Search icons..." aria-label="Search icons" />
 
-    <div class="icon-grid" id="icon-grid"></div>
-  </section>
+          <div id="counts" class="counts" aria-hidden="true"></div>
+        </div>
 
-  <section class="usage container">
-    <h3>Usage</h3>
-    <p>Use any icon directly via CDN:</p>
-    <pre><code>&lt;img src="https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base/icons/system/checkmark.svg" alt="checkmark" /&gt;</code></pre>
-  </section>
+        <div id="iconGrid" class="icon-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="usage" class="usage">
+      <div class="container">
+        <h3>📘 How to use</h3>
+        <p>Insert any icon using jsDelivr (demo copies use the <code>dev</code> branch):</p>
+        <pre><code>&lt;img src="https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base@dev/icons/system/checkmark.svg" alt="Checkmark"&gt;</code></pre>
+      </div>
+    </section>
+  </main>
 
   <footer class="site-footer">
-    <p>© 2025 Icon Base • Built with ❤️</p>
+    <div class="container">
+      <small>Made with 💛 by <a href="https://github.com/morne-esterhuizen" target="_blank" rel="noopener">@morne-esterhuizen</a> — BSD 3-Clause</small>
+    </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script defer src="js/main.js"></script>
 </body>
 </html>
