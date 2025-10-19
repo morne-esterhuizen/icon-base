@@ -1,10 +1,9 @@
-// Simulate your icon database (replace with dynamic JSON if needed)
+// Icon list (you can later automate this with a JSON or build script)
 const icons = [
-  { name: "check", category: "system" },
+  { name: "checkmark", category: "system" },
   { name: "close", category: "system" },
-  { name: "edit", category: "system" },
-  { name: "facebook", category: "social" },
-  { name: "twitter", category: "social" },
+  { name: "facebook", category: "brand" },
+  { name: "twitter", category: "brand" },
 ];
 
 const grid = document.getElementById("iconGrid");
@@ -12,22 +11,28 @@ const searchInput = document.getElementById("search");
 
 function renderIcons(filter = "") {
   grid.innerHTML = "";
+
   icons
-    .filter(name => name.toLowerCase().includes(filter.toLowerCase()))
-    .forEach(name => {
+    .filter(icon =>
+      icon.name.toLowerCase().includes(filter.toLowerCase())
+    )
+    .forEach(icon => {
       const card = document.createElement("div");
       card.className = "icon-card";
+      const iconPath = `icons/${icon.category}/${icon.name}.svg`;
+
       card.innerHTML = `
-        <img src="icons/${name}.svg" alt="${name} icon">
-        <p>${name}</p>
+        <img src="${iconPath}" alt="${icon.name} icon">
+        <p>${icon.name}</p>
       `;
-      card.addEventListener("click", () => copyIconLink(name));
+
+      card.addEventListener("click", () => copyIconLink(icon));
       grid.appendChild(card);
     });
 }
 
-function copyIconLink(name) {
-  const url = `https://cdn.jsdelivr.net/gh/yourusername/icon-base/icons/${name}.svg`;
+function copyIconLink(icon) {
+  const url = `https://cdn.jsdelivr.net/gh/morne-esterhuizen/icon-base/icons/${icon.category}/${icon.name}.svg`;
   navigator.clipboard.writeText(url);
   alert(`Copied link:\n${url}`);
 }
