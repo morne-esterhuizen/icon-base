@@ -170,3 +170,32 @@ footer.site-footer {
   text-align: center;
   font-size: 0.9rem;
 }
+
+
+/**/
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.icon-card {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--card-bg, rgba(0,0,0,0.05));
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.icon-card:hover {
+  transform: translateY(-4px);
+  background: var(--card-hover, rgba(0,0,0,0.1));
+}
+
+.icon-card img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+}
