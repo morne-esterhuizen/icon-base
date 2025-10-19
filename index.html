@@ -3,22 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Icon Library</title>
+  <title>Icon Base — Creative Icon Library</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="A playful, modern icon library for web creators. Browse, preview, and copy icons instantly via CDN." />
 </head>
 <body>
-  <header>
-    <h1>Icon Library</h1>
-    <input type="text" id="searchInput" placeholder="Search icons..." />
-    <select id="categoryFilter">
-      <option value="all">All Categories</option>
-      <option value="system">System</option>
-      <option value="social">Social</option>
-    </select>
+  <header class="site-header">
+    <div class="container">
+      <h1>🎨 Icon Base</h1>
+      <nav>
+        <a href="#showcase">Showcase</a>
+        <a href="#usage">Usage</a>
+        <a href="https://morne-esterhuizen.github.io/icon-base/" target="_blank">GitHub</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="iconGrid" class="icon-grid"></main>
+  <section class="hero">
+    <div class="container">
+      <h2>Express more with less.</h2>
+      <p>A free, creative icon library built for web developers and designers. Copy any icon’s CDN link instantly.</p>
+      <a href="#showcase" class="btn">Browse Icons</a>
+    </div>
+  </section>
 
-  <script src="js/main.js"></script>
+  <section id="showcase" class="showcase">
+    <div class="container">
+      <h3>🧩 Icon Showcase</h3>
+      <input type="text" id="search" placeholder="Search icons..." aria-label="Search icons" />
+      <div class="icon-grid" id="iconGrid">
+        <!-- Icons will be injected here dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <section id="usage" class="usage">
+    <div class="container">
+      <h3>📘 How to Use</h3>
+      <p>Add icons to your project in seconds using jsDelivr CDN:</p>
+      <pre><code>&lt;img src="https://cdn.jsdelivr.net/gh/yourusername/icon-base/icons/star.svg" alt="Star Icon"&gt;</code></pre>
+      <p>You can replace <code>star.svg</code> with any icon name from the library.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Made with 💛 by <a href="https://github.com/morne-esterhuizen" target="_blank">@morne-esterhuizen</a> — Licensed under BSD 3-Clause</p>
+    </div>
+  </footer>
 </body>
 </html>
